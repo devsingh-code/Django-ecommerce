@@ -1,0 +1,58 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block metadescription %}
+  {% if category %}
+    {{ category.description|truncatewords:155 }}
+  {% else%}
+    Welcome to the cushion store, where you can buy comfy and awesome cushions.
+  {% endif %}
+{% endblock %}
+{% block title%}
+{% if category %}
+  {{ category.name }} - Perfect Cushions Store
+{% else%}
+  See our cushions collection
+{% endif %}
+{% endblock %}
+{% block content %}
+  {% if category %}
+    <div class="">
+      <div class="">
+        <p><a href="{% url 'shop:allProdCat' %}">Our Product collection</a>| {{category.name}}</p>
+      </div>
+    </div>
+  {% endif %}
+  <div class="">
+    {% if category %}
+      <img src="{{category.image.url}}" alt="{{category.name}}">
+    </div>
+    <br>
+    <div class="">
+      <h1>{{category.name}}</h1>
+      <p>{{category.description}}</p>
+    </div>
+  {% else %}
+  <img src="{% static 'img/banner.jpg'%}" alt="Our Products Collection">
+    </div>
+    <br>
+    <div class="">
+      <h1>Our Products Collection</h1>
+      <p>Real good cushions</p>
+    </div>
+  {% endif %}
+  <div class="">
+    <div class="">
+      {% for product in products  %}
+        <div class="">
+          <div class="">
+            <a href="#"> <img src="{{product.image.url}}" alt={{product.name}}> </a>
+            <div class="">
+              <h4>{{product.name}}</h4>
+              <p>{{product.price}}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,20 @@
+
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="{% block metadescription %}{%endblock%}">
+    <title>{% block title %}{%endblock%}</title>
+  </head>
+  <body>
+    <div class="">
+      {% include 'shop/header.html'%}
+      {% include 'shop/navbar.html'%}
+      {% block content %}
+
+      {% endblock %}
+
+    </div>
+      {% include 'shop/footer.html' %}
+  </body>
+</html>
