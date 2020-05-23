@@ -23,6 +23,7 @@ from shop import urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('shop/',include('shop.urls')),
+    path('search/',include('search_app.urls')),
 ]
 
 if settings.DEBUG:
