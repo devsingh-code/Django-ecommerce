@@ -54,22 +54,20 @@
 									<br>
 									SKU: {{cart_item.product.id}}
 									<br>
-                  In Stock: {{cart_item.product.stock}}
-                  <br>
-									Unit Price: {{cart_item.product.price}} INR
+									Unit Price: £{{cart_item.product.price}}
 									<br>
-									Qty: {{cart_item.quantity}} x {{cart_item.product.price}}INR
+									Qty: {{cart_item.quantity}} x £{{cart_item.product.price}}
 								</td>
 								<td>
 									£{{cart_item.sub_total}}
 								</td>
 								{% if cart_item.quantity < cart_item.product.stock %}
 									<td>
-										<a href="{% url 'cart:add_cart' cart_item.product.id %}" class="custom_a"><i class="fas fa-plus-circle custom_icon"></i></a>&nbsp;<a href="#" class="custom_a"><i class="fas fa-minus-circle custom_icon"></i></a>&nbsp;<a href="#" class="custom_icon"><i class="fas fa-trash-alt custom_icon"></i></a>
+										<a href="{% url 'cart:add_cart' cart_item.product.id %}" class="custom_a"><i class="fas fa-plus-circle custom_icon"></i></a>&nbsp;<a href="{% url 'cart:cart_remove' cart_item.product.id %}" class="custom_a"><i class="fas fa-minus-circle custom_icon"></i></a>&nbsp;<a href="{% url 'cart:full_remove' cart_item.product.id %}" class="custom_icon"><i class="fas fa-trash-alt custom_icon"></i></a>
 									</td>
 								{% else %}
 									<td>
-										&nbsp;<a href="#" class="custom_a"><i class="fas fa-minus-circle custom_icon"></i></a>&nbsp;<a href="#" class="custom_icon"><i class="fas fa-trash-alt custom_icon"></i></a>
+										&nbsp;<a href="{% url 'cart:cart_remove' cart_item.product.id %}" class="custom_a"><i class="fas fa-minus-circle custom_icon"></i></a>&nbsp;<a href="{% url 'cart:full_remove' cart_item.product.id %}" class="custom_icon"><i class="fas fa-trash-alt custom_icon"></i></a>
 									</td>
 									<td></td>
 								{% endif %}
@@ -96,7 +94,7 @@
 						</tr>
 						<tr>
 							<td class="text-left">
-								Your total is: <strong>{{ total }} INR</strong>
+								Your total is: <strong>£{{ total }}</strong>
 							</td>
 						</tr>
 					</tbody>
@@ -108,7 +106,7 @@
 					    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 					    data-key="{{ data_key }}"
 					    data-amount="{{ stripe_total }}"
-					    data-name="Perfect Cushion Shop"
+					    data-name="Perfect Cushion Store"
 					    data-description="{{ description }}"
 					    data-image="{% static 'img/logo.png' %}"
 					    data-locale="auto"

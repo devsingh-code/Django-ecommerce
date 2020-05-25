@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'shop',
     'search_app',
     'cart',
+    'stripe',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +67,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'shop.context_processors.menu_links',
+                'cart.context_processors.counter',
             ],
         },
     },
@@ -131,3 +133,8 @@ STATICFILES_DIRS=(
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'static','media')
+
+#stripe settings
+
+STRIPE_PUBLISHABLE_KEY='pk_test_a5LqtOlwweHxMmnmotJPYjY200ihKMaO9Z'
+STRIPE_SECRET_KEY='sk_test_6hdRf2EiV4xpx8a5i3KM3DB700DrbimQTH'
