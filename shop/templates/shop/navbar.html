@@ -17,12 +17,11 @@
           {% endfor%}
         </div>
       </li>
-      {% if item_count > 0 %}
-      <li class="nav-item">
-        <a class="nav-link secondary" href="{% url 'cart:cart_detail'%}"><i class="fas fa-shopping-cart"></i>({{item_count}})</a>
 
+      <li class="nav-item">
+        <a class="nav-link secondary" href="{% url 'cart:cart_detail'%}"><i class="fas fa-shopping-cart"></i>{% if item_count > 0 %}({{item_count}}){% endif %}</a>
       </li>
-      {% endif %}
+
     </ul>
     <form class="form-inline my-2 my-lg-0" action="{% url 'search_app:searchResult'%}" method="get">
       {% csrf_token %}

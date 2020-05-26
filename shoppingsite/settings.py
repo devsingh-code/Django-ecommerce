@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'search_app',
     'cart',
     'stripe',
+    'order',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +59,7 @@ ROOT_URLCONF = 'shoppingsite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'shop','templates/'),os.path.join(BASE_DIR,'search_app','templates/'),os.path.join(BASE_DIR,'search_app','templates/')],
+        'DIRS': [os.path.join(BASE_DIR,'shop','templates/'),os.path.join(BASE_DIR,'search_app','templates/'),os.path.join(BASE_DIR,'search_app','templates/'),os.path.join(BASE_DIR,'shop','templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
