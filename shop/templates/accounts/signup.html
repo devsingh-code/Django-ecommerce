@@ -1,0 +1,49 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block metadescription %}
+  Sign Up to get a new account with us. Perfect Cushion Store is the best in town.
+{% endblock %}
+
+{% block title %}
+  Create a New Account - Perfect Cushion Store
+{% endblock %}
+
+{% block content %}
+    <div class="">
+      {% if not form.is_valid %}
+        <div class="mx-auto">
+          <br>
+          <h1 class="my_title text-center">Create a new Account</h1>
+          <br>
+          <div class="col-9 col-sm-9 col-md-6 col-lg-5 mx-auto bg-light">
+            <br>
+            <p>Enter the following information to create new account.</p>
+            <form class=""  method="post">
+              {% csrf_token %}
+              <p>{{form | crispy}}</p>
+              <button type="submit" class="btn btn-secondary">Register Account</button>
+            </form>
+            <br>
+          </div>
+        </div>
+      {% else %}
+        <div class="mx-auto">
+            <br>
+            <h1 class="my_title text-center">Your account is successfully created</h1>
+            <br>
+            <div class="">
+              <p>
+                Dear Customer,
+                <br>
+                <br>
+                Your account has been created and is ready to use.
+                <br>
+                <a href="{% url 'shop:allProdCat' %}">Continue Shopping</a> at Perfect Cushion Store.
+              </p>
+            </div>
+        </div>
+      {% endif %}
+    </div>
+    <br>
+{% endblock %}
