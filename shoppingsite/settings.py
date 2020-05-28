@@ -141,3 +141,11 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'static','media')
 STRIPE_PUBLISHABLE_KEY='pk_test_a5LqtOlwweHxMmnmotJPYjY200ihKMaO9Z'
 STRIPE_SECRET_KEY='sk_test_6hdRf2EiV4xpx8a5i3KM3DB700DrbimQTH'
 CRISPY_TEMPLATE_PACK='bootstrap4'
+
+# to identity email message settings
+
+EMAIL_HOST='smtp.mailgun.org'
+EMAIL_PORT='587'
+EMAIL_USE_TLS=True
+EMAIL_HOST_USER=os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_HOST_PASSWORD')
